@@ -2,6 +2,9 @@
 # Usage: eval "$(anyenv lazyload)"
 # Summary: Initialize `**env` lazy instead of `anyenv init`.
 
+set -e
+[ -n "$ANYENV_DEBUG" ] && set -x
+
 args="$@"
 
 # init on call anyenv
