@@ -16,6 +16,11 @@ function anyenv() {
 }
 EOS
 
+# load completions for anyenv
+if [ -e $ANYENV_ROOT/completions/anyenv.${SHELL##*/} ]; then
+  echo "source $ANYENV_ROOT/completions/anyenv.${SHELL##*/}"
+fi
+
 for env in $(/bin/ls $ANYENV_ROOT/envs/)
 do
 
@@ -33,6 +38,7 @@ function ${env}() {
 }
 EOS
 
+  # load completions for **env
   if [ -e $ANYENV_ROOT/envs/${env}/completions/${env}.${SHELL##*/} ];then
     echo "source $ANYENV_ROOT/envs/${env}/completions/${env}.${SHELL##*/}"
   fi
