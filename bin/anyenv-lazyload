@@ -2,6 +2,15 @@
 # Usage: eval "$(anyenv lazyload)"
 # Summary: Initialize `**env` lazy instead of `anyenv init`.
 
+# init on call anyenv
+cat <<EOS
+function anyenv() {
+  unset -f anyenv
+  eval "\$(anyenv init - \${SHELL})"
+  anyenv \$@
+}
+EOS
+
 for env in $(/bin/ls $ANYENV_ROOT/envs/)
 do
 
